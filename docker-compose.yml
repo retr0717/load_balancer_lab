@@ -1,0 +1,26 @@
+services:
+  web1:
+    build: .
+    environment:
+      - SERVER_ID=web1
+  
+  web2:
+    build: .
+    environment:
+      - SERVER_ID=web2
+  
+  web3:
+    build: .
+    environment:
+      - SERVER_ID=web3
+  
+  loadbalancer:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - web1
+      - web2
+      - web3
