@@ -1,15 +1,7 @@
-# loadbalancer
+# Load Balancer
 
-To install dependencies:
+## docker-compose up --build -d
 
-```bash
-bun install
-```
-
-To run:
-
-```bash
-bun run 
-```
-
-This project was created using `bun init` in bun v1.3.11. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
+## http://localhost:9090 -> prometheus
+## http://localhost:8080 -> web app
+## http://localhost:3001 -> grafana
