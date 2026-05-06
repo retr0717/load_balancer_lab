@@ -2,7 +2,8 @@ global:
   scrape_interval: 3s
 
 scrape_configs:
+# This configuration defines a scrape job named 'web_servers'
   - job_name: 'web_servers'
-
+#  This configuration tells Prometheus to scrape metrics from the specified targets every 3 seconds.
     static_configs:
       - targets: ['web1:3000', 'web2:3000', 'web3:3000']
