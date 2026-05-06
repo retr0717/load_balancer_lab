@@ -1,16 +1,16 @@
 services:
   web1:
-    build: .
+    build: ./server
     environment:
       - SERVER_ID=web1
   
   web2:
-    build: .
+    build: ./server
     environment:
       - SERVER_ID=web2
   
   web3:
-    build: .
+    build: ./server
     environment:
       - SERVER_ID=web3
   
@@ -24,3 +24,17 @@ services:
       - web1
       - web2
       - web3
+  
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+  
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3001:3000"
+    depends_on:
+      - prometheus
